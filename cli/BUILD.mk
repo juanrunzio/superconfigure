@@ -1,19 +1,19 @@
 
-#include cli/bash/BUILD.mk
-#include cli/dash/BUILD.mk
-#include cli/diffutils/BUILD.mk
-#include cli/bc/BUILD.mk
-#include cli/berry/BUILD.mk
-#include cli/coreutils/BUILD.mk
-#include cli/findutils/BUILD.mk
-#include cli/grep/BUILD.mk
-#include cli/less/BUILD.mk
-#include cli/make/BUILD.mk
-#include cli/ninja/BUILD.mk
-#include cli/patch/BUILD.mk
+include cli/bash/BUILD.mk
+include cli/dash/BUILD.mk
+include cli/diffutils/BUILD.mk
+include cli/bc/BUILD.mk
+include cli/berry/BUILD.mk
+include cli/coreutils/BUILD.mk
+include cli/findutils/BUILD.mk
+include cli/grep/BUILD.mk
+include cli/less/BUILD.mk
+include cli/make/BUILD.mk
+include cli/ninja/BUILD.mk
+include cli/patch/BUILD.mk
 include cli/sed/BUILD.mk
-#include cli/tmux/BUILD.mk
-#include cli/zsh/BUILD.mk
+include cli/tmux/BUILD.mk
+include cli/zsh/BUILD.mk
 
 cli: \
 	o/cli/sed/built.fat
