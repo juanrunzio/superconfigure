@@ -2,7 +2,7 @@
 include cli/bash/BUILD.mk
 include cli/dash/BUILD.mk
 include cli/diffutils/BUILD.mk
-#include cli/bc/BUILD.mk
+include cli/bc/BUILD.mk
 include cli/berry/BUILD.mk
 include cli/coreutils/BUILD.mk
 include cli/findutils/BUILD.mk
@@ -16,12 +16,12 @@ include cli/tmux/BUILD.mk
 include cli/zsh/BUILD.mk
 
 cli: \
-	o/cli/sed/built.fat
+	o/cli/sed/built.fat \
+	o/cli/bc/built.fat
 #	o/cosmo-repo/cli/built.fat\
 #	o/cli/bash/built.fat \
 #	o/cli/dash/built.fat \
 #	o/cli/diffutils/built.fat \
-#	o/cli/bc/built.fat \
 #	o/cli/berry/built.fat \
 #	o/cli/coreutils/built.fat \
 #	o/cli/findutils/built.fat \
