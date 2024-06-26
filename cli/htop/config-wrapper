@@ -1,9 +1,20 @@
 #!/bin/sh
 set -e
 
+# Disable scheduling support
+DISABLE_SCHEDULER_SUPPORT=1
+
+CFLAGS="-Os -I$COSMOS/include/ncurses"
+
+if [ "$DISABLE_SCHEDULER_SUPPORT" -eq 1 ]; then
+    CFLAGS="$CFLAGS -UDSCHEDULER_SUPPORT"
+    SCHEDULER_SOURCE=$(find . -name "Scheduling.c")
+    rm -f $SCHEDULER_SOURCE
+fi
+
 "$BASELOC"/o/cli/htop/htop*/configure --prefix="$COSMOS"\
     --enable-static --disable-fuzzing\
     --disable-dependency-tracking\
     --disable-utempter --disable-utf8proc\
     --disable-systemd\
-    CFLAGS="-Os -I$COSMOS/include/ncurses"
+    CFLAGS="$CFLAGS"
