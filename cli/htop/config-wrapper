@@ -7,19 +7,14 @@ echo "BASELOC: $BASELOC"
 echo "COSMOS: $COSMOS"
 
 # Determine the architecture
-if [ "${CONFIG_COMMAND##*.}" = "x86_64" ]; then
-    ARCH="x86_64"
-else
-    ARCH="aarch64"
-fi
-
-echo "Building for architecture: $ARCH"
+ARCH=$(basename "$CONFIG_COMMAND" | sed 's/.*\.//')
+echo "Detected architecture: $ARCH"
 
 # Set up environment variables for cosmocc
 export CC="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-cc"
 export CXX="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-c++"
 export STRIP="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-strip"
-export CFLAGS="-Os -I$COSMOS/include/ncurses -fno-strict-aliasing -Wno-unknown-pragmas -Wno-error=initializer-overrides -Wno-overlength-strings"
+export CFLAGS="-Os -I$COSMOS/include/ncurses -fno-strict-aliasing -Wno-unknown-pragmas -Wno-overlength-strings"
 export CXXFLAGS="$CFLAGS"
 export CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"
 export LDFLAGS="-static"
@@ -47,9 +42,11 @@ if $CC $CFLAGS $LDFLAGS test.c -o test; then
         echo "Test program ran successfully"
     else
         echo "Test program compilation succeeded but execution failed"
+        file ./test
     fi
 else
     echo "Compilation failed"
+    $CC -v $CFLAGS $LDFLAGS test.c -o test
 fi
 
 # Clean up
