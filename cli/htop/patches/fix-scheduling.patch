@@ -1,0 +1,28 @@
+--- htop-3.3.0/Scheduling.c   2023-06-27 12:00:00.000000000 +0000
++++ htop-3.3.0/Scheduling.c   2023-06-27 12:05:00.000000000 +0000
+@@ -23,14 +23,21 @@
+ #include "Settings.h"
+
+ static const SchedulingPolicy policies[] = {
+-   [SCHED_OTHER] = { "Other", SCHED_OTHER, false },
+-   [SCHED_BATCH] = { "Batch", SCHED_BATCH, false },
+-   [SCHED_IDLE] = { "Idle", SCHED_IDLE, false },
+-   [SCHED_FIFO] = { "FiFo", SCHED_FIFO, true },
+-   [SCHED_RR] = { "RoundRobin", SCHED_RR, true }
++   { "Other", SCHED_OTHER, false },
++   { "FiFo", SCHED_FIFO, true },
++   { "RoundRobin", SCHED_RR, true },
++   { "Batch", SCHED_BATCH, false },
++   { "Idle", SCHED_IDLE, false }
+ };
+
+ const SchedulingPolicy *getSchedulingPolicy(int policy) {
++   switch (policy) {
++       case SCHED_OTHER: return &policies[0];
++       case SCHED_FIFO: return &policies[1];
++       case SCHED_RR: return &policies[2];
++       case SCHED_BATCH: return &policies[3];
++       case SCHED_IDLE: return &policies[4];
++   }
+     return NULL;
+ }

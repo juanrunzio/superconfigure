@@ -1,88 +1,9 @@
 #!/bin/sh
-set -ex
+set -e
 
-echo "Starting config-wrapper for htop"
-echo "Current directory: $(pwd)"
-echo "BASELOC: $BASELOC"
-echo "COSMOS: $COSMOS"
-
-# Determine the architecture
-ARCH=$(basename "$CONFIG_COMMAND" | sed 's/.*\.//')
-echo "Detected architecture: $ARCH"
-
-# Set up environment variables for cosmocc
-export CC="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-cc"
-export CXX="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-c++"
-export STRIP="$BASELOC/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-strip"
-export CFLAGS="-Os -I$COSMOS/include/ncurses -fno-strict-aliasing -Wno-unknown-pragmas -Wno-overlength-strings"
-export CXXFLAGS="$CFLAGS"
-export CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"
-export LDFLAGS="-static"
-
-echo "CC: $CC"
-echo "CFLAGS: $CFLAGS"
-echo "LDFLAGS: $LDFLAGS"
-
-# Print compiler version
-$CC --version
-
-# Create a simple test program
-cat > test.c << EOF
-#include <stdio.h>
-int main() {
-    printf("Hello, Cosmopolitan!\n");
-    return 0;
-}
-EOF
-
-echo "Attempting to compile test program..."
-if $CC $CFLAGS $LDFLAGS test.c -o test; then
-    echo "Compilation successful"
-    if ./test; then
-        echo "Test program ran successfully"
-    else
-        echo "Test program compilation succeeded but execution failed"
-        file ./test
-    fi
-else
-    echo "Compilation failed"
-    $CC -v $CFLAGS $LDFLAGS test.c -o test
-fi
-
-# Clean up
-rm -f test test.c
-
-echo "Running configure script..."
-"$BASELOC"/o/cli/htop/htop-3.3.0/configure \
-    --prefix="$COSMOS" \
-    --host="${ARCH}-unknown-linux-gnu" \
-    --build="$($BASELOC/o/cli/htop/htop-3.3.0/build-aux/config.guess)" \
-    --enable-static \
-    --disable-shared \
-    --disable-unicode \
-    --config-cache \
-    --enable-openvz \
-    --enable-vserver \
-    --enable-hwloc \
-    --enable-capabilities \
-    ac_cv_func_malloc_0_nonnull=yes \
-    ac_cv_func_realloc_0_nonnull=yes \
-    CFLAGS="$CFLAGS" \
-    CXXFLAGS="$CXXFLAGS" \
-    CPPFLAGS="$CPPFLAGS" \
-    LDFLAGS="$LDFLAGS" \
-    CC="$CC" \
-    CXX="$CXX" \
-    STRIP="$STRIP"
-
-configure_exit_code=$?
-
-echo "Configure script finished with exit code: $configure_exit_code"
-
-if [ $configure_exit_code -ne 0 ]; then
-    echo "Configure failed. Last 50 lines of config.log:"
-    tail -n 50 config.log
-    exit $configure_exit_code
-fi
-
-echo "Config-wrapper completed successfully"
+"$BASELOC"/o/cli/htop/htop*/configure --prefix="$COSMOS"\
+    --enable-static --disable-fuzzing\
+    --disable-dependency-tracking\
+    --disable-utempter --disable-utf8proc\
+    --disable-systemd\
+    CFLAGS="-Os -I$COSMOS/include/ncurses"
