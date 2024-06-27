@@ -9,7 +9,9 @@ CFLAGS="-Os -I$COSMOS/include/ncurses"
 if [ "$DISABLE_SCHEDULER_SUPPORT" -eq 1 ]; then
     CFLAGS="$CFLAGS -UDSCHEDULER_SUPPORT"
     SCHEDULER_SOURCE=$(find . -name "Scheduling.c")
+    SCHEDULER_OBJECT=$(find . -name "Scheduling.o")
     rm -f $SCHEDULER_SOURCE
+    rm -f $SCHEDULER_OBJECT
 fi
 
 "$BASELOC"/o/cli/htop/htop*/configure --prefix="$COSMOS"\
