@@ -18,16 +18,16 @@ jobs:
         uses: actions/checkout@master
       - name: support ape bins and SSL things
         run: bash ./.github/scripts/setup
-      - name: build cosmo
-        working-directory: /juanrunzio/superconfigure
+      - name: build Cosmo
+        working-directory: /ahgamut/superconfigure
         run: bash ./.github/scripts/cosmo
       - name: build ${{ matrix.result }}
-        working-directory: /juanrunzio/superconfigure
+        working-directory: /ahgamut/superconfigure
         env:
           COLLECTION: ${{ matrix.result }}
         run: bash ./.github/scripts/collectbuild ${{ matrix.result }}
       - name: collect into zip
-        working-directory: /juanrunzio/superconfigure
+        working-directory: /ahgamut/superconfigure
         env:
           ZFILENAME: ${{ matrix.result }}
         run: bash ./.github/scripts/collectzip
