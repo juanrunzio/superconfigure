@@ -4,7 +4,7 @@ HTOP_DEPS := lib/ncurses
 $(eval $(call DOWNLOAD_SOURCE,cli/htop,$(HTOP_SRC)))
 $(eval $(call SPECIFY_DEPS,cli/htop,$(HTOP_DEPS)))
 
-o/cli/htop/patched: o/cli/htop/source
+o/cli/htop/patched: o/cli/htop/patched
 	cd $(BASELOC)/o/cli/htop/htop* && patch -p1 < $(BASELOC)/patches/fix-scheduling.patch
 	touch $@
 
