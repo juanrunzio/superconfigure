@@ -1,10 +1,39 @@
 #!/bin/sh
 set -e
-"$BASELOC"/o/cli/htop/htop*/configure --prefix="$COSMOS"\
-    --enable-static --disable-fuzzing\
-    --disable-dependency-tracking\
-    --disable-utempter --disable-utf8proc\
-    --disable-systemd\
-    CFLAGS="-Os -I$COSMOS/include/ncurses -fno-strict-aliasing -Wno-unknown-pragmas -Wno-error=initializer-overrides -Wno-overlength-strings"\
-    CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"\
-    LDFLAGS="-static"
+
+# Determine the architecture
+if [ "${CONFIG_COMMAND##*.}" = "x86_64" ]; then
+    ARCH="x86_64"
+else
+    ARCH="aarch64"
+fi
+
+# Set up environment variables for cosmocc
+export CC="/ahgamut/superconfigure/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-cc"
+export CXX="/ahgamut/superconfigure/cosmopolitan/cosmocc/bin/${ARCH}-unknown-cosmo-c++"
+export CFLAGS="-Os -I$COSMOS/include/ncurses -fno-strict-aliasing -Wno-unknown-pragmas -Wno-error=initializer-overrides -Wno-overlength-strings"
+export CXXFLAGS="$CFLAGS"
+export CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"
+export LDFLAGS="-static"
+
+# Run configure with explicit settings
+"$BASELOC"/o/cli/htop/htop*/configure \
+    --prefix="$COSMOS" \
+    --host="${ARCH}-unknown-cosmo" \
+    --enable-static \
+    --disable-shared \
+    --disable-fuzzing \
+    --disable-dependency-tracking \
+    --disable-utempter \
+    --disable-utf8proc \
+    --disable-systemd \
+    --enable-unicode \
+    --enable-cgroup \
+    --enable-openvz \
+    --enable-vserver \
+    --enable-ancient-vserver \
+    --enable-hwloc \
+    --enable-setuid \
+    --enable-delayacct \
+    --enable-capabilities \
+    --enable-linux-affinity
