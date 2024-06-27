@@ -16,24 +16,26 @@ export CXXFLAGS="$CFLAGS"
 export CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"
 export LDFLAGS="-static"
 
+# Create a temporary config.sub with Cosmopolitan OS support
+TEMP_CONFIG_SUB=$(mktemp)
+cat "$BASELOC"/o/cli/htop/htop-3.3.0/build-aux/config.sub > "$TEMP_CONFIG_SUB"
+sed -i 's/-\*-\*)/&\n    cosmo*)\n      os=cosmo\n      ;;\n/' "$TEMP_CONFIG_SUB"
+
 # Run configure with explicit settings
-"$BASELOC"/o/cli/htop/htop*/configure \
+"$BASELOC"/o/cli/htop/htop-3.3.0/configure \
     --prefix="$COSMOS" \
-    --host="${ARCH}-unknown-cosmo" \
+    --host="${ARCH}-unknown-linux-gnu" \
     --enable-static \
     --disable-shared \
-    --disable-fuzzing \
-    --disable-dependency-tracking \
-    --disable-utempter \
-    --disable-utf8proc \
-    --disable-systemd \
-    --enable-unicode \
-    --enable-cgroup \
+    --disable-unicode \
+    --config-cache \
     --enable-openvz \
     --enable-vserver \
     --enable-ancient-vserver \
     --enable-hwloc \
-    --enable-setuid \
     --enable-delayacct \
     --enable-capabilities \
-    --enable-linux-affinity
+    CONFIG_SUB="$TEMP_CONFIG_SUB"
+
+# Clean up
+rm -f "$TEMP_CONFIG_SUB"
