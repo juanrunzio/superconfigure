@@ -8,7 +8,6 @@ on:
 
 jobs:
   handle-release:
-    runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository }}/ubuntu-dependencies:latest
     strategy:
