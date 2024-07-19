@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository }}/ubuntu-dependencies:latest
+      volumes:
+        - ${{ github.workspace }}:/ahgamut/superconfigure
     strategy:
       fail-fast: false
       matrix:
@@ -30,6 +32,13 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
+        with:
+          path: /ahgamut/superconfigure
+      
+      - name: Debug
+        run: | 
+          pwd
+          ls -R /ahgamut/superconfigure
 
       - name: Build Cosmo
         working-directory: /ahgamut/superconfigure
