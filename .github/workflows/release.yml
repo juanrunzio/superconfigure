@@ -6,9 +6,6 @@ on:
 
 name: Prepare Ubuntu
 
-on:
-  workflow_dispatch:
-
 jobs:
   prepare-ubuntu:
     runs-on: ubuntu-latest
@@ -30,9 +27,6 @@ jobs:
           sudo apt-get install -y git
 
 name: Build Cosmo
-
-on:
-  workflow_dispatch:
 
 jobs:
   build-cosmo:
