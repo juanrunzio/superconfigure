@@ -31,9 +31,6 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@master
 
-      - name: support ape bins and SSL things
-        run: bash ./.github/scripts/setup
-
       - name: Build Cosmo
         working-directory: /ahgamut/superconfigure
         run: bash ./.github/scripts/cosmo
