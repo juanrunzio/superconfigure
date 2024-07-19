@@ -37,12 +37,6 @@ jobs:
         run: |
           pwd
           ls -la
-          if [ "$(pwd)" != "/ahgamut/superconfigure" ]; then
-            echo "Current directory is not /ahgamut/superconfigure, copying files..."
-            cp -R . /ahgamut/superconfigure/
-          else
-            echo "Already in /ahgamut/superconfigure, no need to copy"
-          fi
           cd /ahgamut/superconfigure
           ls -la
 
