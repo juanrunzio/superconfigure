@@ -64,6 +64,9 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@master
 
+      - name: support ape bins and SSL things
+        run: bash ./.github/scripts/setup
+
       - name: Build ${{ matrix.result }}
         working-directory: /ahgamut/superconfigure
         env:
