@@ -35,15 +35,16 @@ jobs:
 
       - name: Set up environment
         run: |
-          mkdir -p /ahgamut/superconfigure
-          cp -R . /ahgamut/superconfigure
+          pwd
+          ls -la
+          if [ "$(pwd)" != "/ahgamut/superconfigure" ]; then
+            echo "Current directory is not /ahgamut/superconfigure, copying files..."
+            cp -R . /ahgamut/superconfigure/
+          else
+            echo "Already in /ahgamut/superconfigure, no need to copy"
+          fi
           cd /ahgamut/superconfigure
           ls -la
-      
-      - name: Debug
-        run: | 
-          pwd
-          ls -R /ahgamut/superconfigure
 
       - name: Build Cosmo
         working-directory: /ahgamut/superconfigure
