@@ -4,6 +4,49 @@ on:
   release:
     types: [created]
 
+name: Prepare Ubuntu
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Update and upgrade Ubuntu packages
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade -y
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y build-essential
+          sudo apt-get install -y curl
+          sudo apt-get install -y wget
+          sudo apt-get install -y git
+
+name: Build Cosmo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-cosmo:
+    runs-on: ubuntu-latest
+    needs: prepare-ubuntu
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@master
+
+      - name: Build Cosmo
+        working-directory: /ahgamut/superconfigure
+        run: bash ./.github/scripts/cosmo
+
 name: Handle Release
 jobs:
   generate:
@@ -16,11 +59,6 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
-      - name: support ape bins and SSL things
-        run: bash ./.github/scripts/setup
-      - name: build Cosmo
-        working-directory: /ahgamut/superconfigure
-        run: bash ./.github/scripts/cosmo
       - name: build ${{ matrix.result }}
         working-directory: /ahgamut/superconfigure
         env:
