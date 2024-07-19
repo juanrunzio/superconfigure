@@ -31,9 +31,14 @@ jobs:
     name: ${{ matrix.result }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@master
-        with:
-          path: /ahgamut/superconfigure
+        uses: actions/checkout@v2
+
+      - name: Set up environment
+        run: |
+          mkdir -p /ahgamut/superconfigure
+          cp -R . /ahgamut/superconfigure
+          cd /ahgamut/superconfigure
+          ls -la
       
       - name: Debug
         run: | 
