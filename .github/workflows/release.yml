@@ -1,36 +1,46 @@
+name: Handle Release
+
 on:
   workflow_dispatch:
   create:
   release:
     types: [created]
 
-name: Handle Release
 jobs:
   generate:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        result: [lang, compress, web, aarch64-gcc, x86_64-gcc, cli, datasette, pypack1, editor]
+        result:
+          [
+            lang,
+            compress,
+            web,
+            aarch64-gcc,
+            x86_64-gcc,
+            cli,
+            datasette,
+            pypack1,
+            editor,
+          ]
     name: ${{ matrix.result }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
-      - name: support ape bins and SSL things
-        run: bash ./.github/scripts/setup
-      - name: build Cosmo
-        working-directory: /ahgamut/superconfigure
-        run: bash ./.github/scripts/cosmo
-      - name: build ${{ matrix.result }}
+
+      - name: Build ${{ matrix.result }}
         working-directory: /ahgamut/superconfigure
         env:
           COLLECTION: ${{ matrix.result }}
         run: bash ./.github/scripts/collectbuild ${{ matrix.result }}
-      - name: collect into zip
+
+      - name: Collect into zip
         working-directory: /ahgamut/superconfigure
         env:
           ZFILENAME: ${{ matrix.result }}
         run: bash ./.github/scripts/collectzip
+
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
