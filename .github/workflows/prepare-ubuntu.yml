@@ -1,27 +1,39 @@
 name: Prepare Ubuntu
 
 on:
+  workflow_dispatch:
+  create:
+  release:
+    types: [created]
   push:
     branches:
       - build_htop
-  workflow_dispatch:
 
 jobs:
   setup-ubuntu:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Update and upgrade Ubuntu packages
-      run: |
-        sudo apt-get update
-        sudo apt-get upgrade -y
+      - name: Update and upgrade Ubuntu packages
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade -y
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get install -y build-essential
-        sudo apt-get install -y curl
-        sudo apt-get install -y wget
-        sudo apt-get install -y git
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y build-essential
+          sudo apt-get install -y curl
+          sudo apt-get install -y wget
+          sudo apt-get install -y git
+
+      - name: Create ready file
+        run: echo "ready" > ready.txt
+
+      - name: Upload ready artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ubuntu-ready
+          path: ready.txt

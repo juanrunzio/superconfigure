@@ -2,6 +2,9 @@ name: Build Cosmo
 
 on:
   workflow_dispatch:
+  create:
+  release:
+    types: [created]
   push:
     branches:
       - build_htop
@@ -11,9 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@master
-      
-    - name: Build Cosmo
-      working-directory: /ahgamut/superconfigure
-      run: bash ./.github/scripts/cosmo
+      - name: Checkout the repository
+        uses: actions/checkout@master
+
+      - name: Download ready artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ubuntu-ready
+          path: ./
+
+      - name: Build Cosmo
+        working-directory: /ahgamut/superconfigure
+        run: bash ./.github/scripts/cosmo
