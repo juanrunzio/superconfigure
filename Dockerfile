@@ -2,11 +2,15 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Añadir repositorio universe y actualizar
+RUN apt-get update && apt-get install -y software-properties-common && \
+    add-apt-repository universe && \
+    apt-get update && apt-get upgrade -y
+
 # Instalar dependencias
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y \
+RUN apt-get install -y \
     ca-certificates libssl-dev \
-    qemu qemu-utils qemu-user-static \
+    qemu-system qemu-user qemu-utils qemu-user-static \
     texinfo groff libtool \
     cmake ninja-build bison zip \
     pkg-config build-essential autoconf re2c \
@@ -19,7 +23,7 @@ RUN mkdir -p /zip /ahgamut && \
     chmod -R 0777 /zip /ahgamut
 
 # Configurar binfmt para APE
-RUN echo ':APE:M::MZqFpD::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register
+RUN echo ':APE:M::MZqFpD::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register || true
 
 # Establecer el directorio de trabajo
 WORKDIR /ahgamut/superconfigure
