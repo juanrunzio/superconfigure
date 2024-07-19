@@ -7,4 +7,4 @@ BC_CONFIG_ARGS = --prefix="$$(COSMOS)"\
 $(eval $(call DOWNLOAD_SOURCE,cli/bc,$(BC_SRC)))
 $(eval $(call AUTOTOOLS_BUILD,cli/bc,$(BC_CONFIG_ARGS),$(BC_CONFIG_ARGS)))
 
-o/cli/bc/built.fat: BINS = bc  #dc
+o/cli/bc/built.fat: BINS = bc #dc
