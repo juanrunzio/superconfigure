@@ -1,0 +1,19 @@
+name: Build Cosmo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - build_htop
+
+jobs:
+  build-cosmo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@master
+      
+    - name: Build Cosmo
+      working-directory: /ahgamut/superconfigure
+      run: bash ./.github/scripts/cosmo
