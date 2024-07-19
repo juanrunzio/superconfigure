@@ -40,5 +40,3 @@ RUN mkdir -p cosmos results/bin && \
     done && \
     mkdir -p /zip/usr/share /zip/usr/lib
 
-# Comando por defecto
-CMD ["/bin/bash"]
