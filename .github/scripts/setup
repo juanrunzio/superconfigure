@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-# update?
-sudo apt update
-
-# ssl certs
-sudo apt-get install -y ca-certificates libssl-dev\
-    qemu qemu-utils qemu-user-static\
-    texinfo groff libtool\
-    cmake ninja-build bison zip\
-    pkg-config build-essential autoconf re2c
-
 # the zip folder
 sudo mkdir -p /zip
 sudo chmod -R 0777 /zip
