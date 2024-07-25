@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+whoami
 
 # the zip folder
 sudo mkdir -p /zip
