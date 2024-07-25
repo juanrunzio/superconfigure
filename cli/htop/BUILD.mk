@@ -8,7 +8,7 @@ o/cli/htop/source:
 	tar -xzf $(BASELOC)/o/cli/htop/source.tar.gz -C $(BASELOC)/o/cli/htop
 	touch $@
 o/cli/htop/patched: o/cli/htop/source
-	cd $(BASELOC)/o/cli/htop/htop* && patch -p1 < juanrunzio/superconfigure/cli/htop/patches/fix-scheduling.patch
+	cd $(BASELOC)/o/cli/htop/htop* && patch -p1 < $(BASELOC)/cli/htop/patches/fix-scheduling.patch
 	touch $@
 o/cli/htop/setup: o/cli/htop/patched
 	cd $(BASELOC)/o/cli/htop/htop* && ./autogen.sh
