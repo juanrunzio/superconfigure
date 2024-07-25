@@ -8,6 +8,7 @@ sudo chmod -R 0777 /zip
 sudo mkdir -p /ahgamut
 sudo chmod -R 0777 /ahgamut
 
+echo "$GITHUB_WORKSPACE"
 cd "$GITHUB_WORKSPACE" || exit
 cd ../
 cp -r superconfigure /ahgamut
