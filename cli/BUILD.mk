@@ -9,6 +9,7 @@ include cli/grep/BUILD.mk
 include cli/jq/BUILD.mk
 include cli/less/BUILD.mk
 include cli/make/BUILD.mk
+include cli/nethack/BUILD.mk
 include cli/ninja/BUILD.mk
 include cli/patch/BUILD.mk
 include cli/sed/BUILD.mk
@@ -28,6 +29,7 @@ cli: \
 	o/cli/jq/built.fat \
 	o/cli/less/built.fat \
 	o/cli/make/built.fat \
+	o/cli/nethack/built.fat \
 	o/cli/ninja/built.fat \
 	o/cli/patch/built.fat \
 	o/cli/sox/built.fat \
