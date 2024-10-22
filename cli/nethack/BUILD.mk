@@ -1,15 +1,15 @@
 
-VIM_SRC := https://github.com/vim/vim/archive/refs/tags/v9.0.1670.tar.gz 
+NETHACK_SRC := https://www.nethack.org/download/3.6.7/nethack-367-src.tgz
 
-$(eval $(call DOWNLOAD_SOURCE,editor/vim,$(VIM_SRC)))
-$(eval $(call SPECIFY_DEPS,editor/vim,lib/ncurses lib/readline))
+$(eval $(call DOWNLOAD_SOURCE,cli/nethack,$(NETHACK_SRC)))
+$(eval $(call SPECIFY_DEPS,cli/nethack,lib/ncurses))
 
-o/editor/vim/configured.x86_64:\
-	CONFIG_COMMAND = $(BASELOC)/editor/vim/config-wrapper
+o/cli/nethack/configured.x86_64:\
+	CONFIG_COMMAND = $(BASELOC)/cli/nethack/config-wrapper
 
-o/editor/vim/configured.aarch64:\
-	CONFIG_COMMAND = $(BASELOC)/editor/vim/config-wrapper
+o/cli/nethack/configured.aarch64:\
+	CONFIG_COMMAND = $(BASELOC)/cli/nethack/config-wrapper
 
-o/editor/vim/built.fat: FATTEN_COMMAND = $(BASELOC)/config/apelink_folder.sh
-o/editor/vim/built.fat: \
-	BINS = vim usr/share/terminfo usr/share/vim
+o/cli/nethack/built.fat: FATTEN_COMMAND = $(BASELOC)/config/apelink_folder.sh
+o/cli/nethack/built.fat: \
+	BINS = nethack usr/share/terminfo usr/share/nethack
