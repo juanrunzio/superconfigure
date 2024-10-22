@@ -7,11 +7,8 @@ on:
     types: [created]
 
 jobs:
-  handle-release:
+  generate:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/${{ github.repository }}/ubuntu-dependencies:latest
-      options: --privileged -v /proc:/proc
     strategy:
       fail-fast: false
       matrix:
@@ -19,7 +16,7 @@ jobs:
     name: ${{ matrix.result }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
       - name: support ape bins and SSL things
         run: bash ./.github/scripts/setup
