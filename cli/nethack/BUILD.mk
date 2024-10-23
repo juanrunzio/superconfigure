@@ -1,5 +1,5 @@
 
-NETHACK_SRC := https://www.nethack.org/download/3.6.7/nethack-367-src.tgz
+NETHACK_SRC := https://github.com/NetHack/NetHack/archive/refs/tags/NetHack-3.6.7_Released.tar.gz
 
 $(eval $(call DOWNLOAD_SOURCE,cli/nethack,$(NETHACK_SRC)))
 $(eval $(call SPECIFY_DEPS,cli/nethack,lib/ncurses compress/gzip))
