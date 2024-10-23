@@ -2,7 +2,7 @@
 NETHACK_SRC := https://github.com/NetHack/NetHack/archive/refs/tags/NetHack-3.6.7_Released.tar.gz
 
 $(eval $(call DOWNLOAD_SOURCE,cli/nethack,$(NETHACK_SRC)))
-$(eval $(call SPECIFY_DEPS,cli/nethack,lib/ncurses compress/gzip))
+$(eval $(call SPECIFY_DEPS,cli/nethack,lib/ncurses))
 
 o/cli/nethack/configured.x86_64:\
 	CONFIG_COMMAND = $(BASELOC)/cli/nethack/config-wrapper

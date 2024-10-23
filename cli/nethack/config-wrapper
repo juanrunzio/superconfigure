@@ -16,6 +16,5 @@ alias ar="$AR"
     --with-curses-h --disable-stripping --enable-widec \
     --disable-lib-suffixes \
     --prefix="$COSMOS"\
-    --with-gzip=gzip \
     --sysconfdir=/zip --datarootdir=/zip/usr/share \
     --host=x86_64-pc-linux-musl --build=x86_64-pc-linux-musl
