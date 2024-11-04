@@ -16,4 +16,5 @@ set -e
     --with-curses-h --disable-stripping --enable-widec \
     --disable-lib-suffixes \
     --sysconfdir=/zip --datarootdir=/zip/usr/share \
-    --host=x86_64-pc-linux-musl --build=x86_64-pc-linux-musl
+    --host=x86_64-pc-linux-musl --build=x86_64-pc-linux-musl\
+    CFLAGS="-Os -I$COSMOS/include/ncurses"
