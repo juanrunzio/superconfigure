@@ -1,13 +1,13 @@
 #!/bin/sh
 set -e
-export STRIP="/bin/true"
-alias strip=$STRIP
-alias ar="$AR"
+# export STRIP="/bin/true"
+# alias strip=$STRIP
+# alias ar="$AR"
 
 # why
 # cp -r "$BASELOC"/o/editor/vim/vim*/* ./
 
-./configure \
+"$BASELOC"/o/cli/nethack/nethack*/configure --prefix="$COSMOS"\
     --without-libtool --without-shared \
     --without-manpages --without-tests --without-tack \
     --without-ada --without-cxx --without-cxx-binding \
@@ -15,6 +15,6 @@ alias ar="$AR"
     --without-dlsym --without-pcre2 --without-sysmouse \
     --with-curses-h --disable-stripping --enable-widec \
     --disable-lib-suffixes \
-    --prefix="$COSMOS"\
     --sysconfdir=/zip --datarootdir=/zip/usr/share \
-    --host=x86_64-pc-linux-musl --build=x86_64-pc-linux-musl
+    --host=x86_64-pc-linux-musl --build=x86_64-pc-linux-musl\
+    CFLAGS="-Os -I$COSMOS/include/ncurses"
