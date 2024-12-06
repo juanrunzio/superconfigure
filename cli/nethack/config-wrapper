@@ -8,7 +8,7 @@ set -e
 pwd
 ls -la
 ls -a /ahgamut/superconfigure/o/cli/nethack/
-cp -r "$BASELOC"/o/cli/nethack/Nethack*/* ./
+cp -r "$BASELOC"/o/cli/nethack/NetHack*/* ./
 
 ./configure --prefix="$COSMOS"\
     --without-libtool --without-shared \
