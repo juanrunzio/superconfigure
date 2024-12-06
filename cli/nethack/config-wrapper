@@ -5,6 +5,8 @@ set -e
 # alias ar="$AR"
 
 # why
+pwd
+ls -la
 cp -r "$BASELOC"/o/cli/nethack/Nethack*/* ./
 
 ./configure --prefix="$COSMOS"\
