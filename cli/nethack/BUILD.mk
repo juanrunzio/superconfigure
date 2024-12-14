@@ -5,6 +5,14 @@ NETHACK_DEPS := lib/ncurses
 $(eval $(call DOWNLOAD_SOURCE,cli/nethack,$(NETHACK_SRC)))
 $(eval $(call SPECIFY_DEPS,cli/nethack,$(NETHACK_DEPS)))
 
+o/cli/nethack/configured.x86_64:
+	mkdir -p $(BASELOC)/zip/cfg
+	$(CONFIG_COMMAND)
+
+o/cli/nethack/configured.aarch64:
+	mkdir -p $(BASELOC)/zip/cfg
+	$(CONFIG_COMMAND)
+
 o/cli/nethack/configured.x86_64: CONFIG_COMMAND = $(BASELOC)/cli/nethack/config-wrapper
 o/cli/nethack/configured.aarch64: CONFIG_COMMAND = $(BASELOC)/cli/nethack/config-wrapper
 
