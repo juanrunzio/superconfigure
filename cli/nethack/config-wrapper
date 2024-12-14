@@ -11,6 +11,8 @@ ls -la
 #ls -a /ahgamut/superconfigure/o/cli/nethack/
 cp -r "$BASELOC"/o/cli/nethack/NetHack*/* ./
 
+mdkir -p /zip/cfg
+
 sh sys/unix/setup.sh sys/unix/hints/linux
 
 
