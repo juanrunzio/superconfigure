@@ -64,7 +64,7 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
 +POSTINSTALL=cp -n sys/unix/sysconf $(SYSCONFDIR)/sysconf; $(CHOWN) $(GAMEUID) $(SYSCONFDIR)/sysconf; $(CHGRP) $(GAMEGRP) $(SYSCONFDIR)/sysconf; chmod $(VARFILEPERM) $(SYSCONFDIR)/sysconf;
  
 -CFLAGS=-g -O -I../include -DNOTPARMDECL
-+CFLAGS+=-Os -D_XOPEN_SOURCE_EXTENDED -D__COSMOPOLITAN__ -I../include -I$COSMOS/include/ncurses -DNOTPARMDECL
++CFLAGS+=-Os -D_XOPEN_SOURCE_EXTENDED -D__COSMOPOLITAN__ -I../include -I$(COSMOS)/include/ncurses -DNOTPARMDECL
  CFLAGS+=-DDLB
  CFLAGS+=-DCOMPRESS=\"/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
 -CFLAGS+=-DSYSCF -DSYSCF_FILE=\"$(HACKDIR)/sysconf\" -DSECURE
