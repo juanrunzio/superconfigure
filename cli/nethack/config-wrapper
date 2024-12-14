@@ -12,12 +12,4 @@ cp -r "$BASELOC"/o/cli/nethack/NetHack*/* ./
 
 sh sys/unix/setup.sh sys/unix/hints/linux
 
-./configure --prefix="$COSMOS" \
-    --without-libtool --without-shared \
-    --without-manpages --without-tests \
-    --without-tack --without-ada \
-    --without-cxx --with-termlib=tinfo \
-    --disable-stripping --enable-widec \
-    --sysconfdir=/zip --datarootdir=/zip/usr/share \
-    CFLAGS="-Os -I$COSMOS/include/ncurses" \
-    LDFLAGS="-L$COSMOS/lib"
+
