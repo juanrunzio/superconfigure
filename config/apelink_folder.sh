@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-echo "debugging"
-ls -la
 
 EXE="${1:-ERROR}"
 shift 1
