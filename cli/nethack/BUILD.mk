@@ -10,3 +10,7 @@ o/cli/nethack/configured.aarch64: CONFIG_COMMAND = $(BASELOC)/cli/nethack/config
 
 o/cli/nethack/built.fat: FATTEN_COMMAND = $(BASELOC)/config/apelink_folder.sh
 o/cli/nethack/built.fat: BINS = nethack usr/share/terminfo
+o/cli/nethack/built.fat:
+	@echo "Directory contents before fattening:"
+	@ls -la
+	$(FATTEN_COMMAND) $(BINS)
