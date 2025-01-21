@@ -1,7 +1,6 @@
 
 include games/nethack/BUILD.mk
 
-games: \ 
-	o/games/nethack/built.fat 
+games: o/games/nethack/built.fat
 
 .PHONY: games
