@@ -10,3 +10,5 @@ o/games/nethack/configured.aarch64: CONFIG_COMMAND = $(BASELOC)/games/nethack/co
 
 o/games/nethack/built.fat: FATTEN_COMMAND = $(BASELOC)/config/apelink_folder.sh
 o/games/nethack/built.fat: BINS = nethack share/terminfo
+
+#este comentario es para triggerear el ci
