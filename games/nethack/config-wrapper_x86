@@ -9,6 +9,6 @@ echo "debug"
 ls -la
 cat -n sys/unix/hints/linux | head -20
 
-patch -p0 --dry-run -i "/home/runner/work/superconfigure/superconfigure/games/nethack/minimal_x86.diff"
+patch -p0 --fuzz=3 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/minimal_x86.diff"
 
 sh sys/unix/setup.sh sys/unix/hints/linux
