@@ -1,6 +1,6 @@
-diff -ruN NetHack-3.6.7a/include/config.h NetHack-3.6.7/include/config.h
---- NetHack-3.6.7a/include/config.h	2024-12-13 16:28:16.700121185 -0300
-+++ NetHack-3.6.7/include/config.h	2024-12-13 16:28:16.746788171 -0300
+diff -ruN include/config.h include/config.h
+--- include/config.h	2024-12-13 16:28:16.700121185 -0300
++++ include/config.h	2024-12-13 16:28:16.746788171 -0300
 @@ -343,7 +343,6 @@
  #define INSURANCE /* allow crashed game recovery */
  
@@ -9,9 +9,9 @@ diff -ruN NetHack-3.6.7a/include/config.h NetHack-3.6.7/include/config.h
  #endif
  
  #ifdef CHDIR
-diff -ruN NetHack-3.6.7a/include/dlb.h NetHack-3.6.7/include/dlb.h
---- NetHack-3.6.7a/include/dlb.h	2024-12-13 16:28:16.700121185 -0300
-+++ NetHack-3.6.7/include/dlb.h	2024-12-13 16:28:16.740121459 -0300
+diff -ruN include/dlb.h include/dlb.h
+--- include/dlb.h	2024-12-13 16:28:16.700121185 -0300
++++ include/dlb.h	2024-12-13 16:28:16.740121459 -0300
 @@ -38,7 +38,7 @@
  /* library definitions */
  #ifndef DLBFILE
@@ -21,9 +21,9 @@ diff -ruN NetHack-3.6.7a/include/dlb.h NetHack-3.6.7/include/dlb.h
  #else
  #define MAX_DLB_FILENAME 256
  #define DLBFILE dlbfilename
-diff -ruN NetHack-3.6.7a/include/tradstdc.h NetHack-3.6.7/include/tradstdc.h
---- NetHack-3.6.7a/include/tradstdc.h	2024-12-13 16:28:16.700121185 -0300
-+++ NetHack-3.6.7/include/tradstdc.h	2024-12-13 16:28:16.736788103 -0300
+diff -ruN include/tradstdc.h include/tradstdc.h
+--- include/tradstdc.h	2024-12-13 16:28:16.700121185 -0300
++++ include/tradstdc.h	2024-12-13 16:28:16.736788103 -0300
 @@ -432,7 +432,7 @@
  #if !defined(__linux__) || defined(GCC_URWARN)
  /* disable gcc's __attribute__((__warn_unused_result__)) since explicitly
@@ -33,9 +33,9 @@ diff -ruN NetHack-3.6.7a/include/tradstdc.h NetHack-3.6.7/include/tradstdc.h
  #define warn_unused_result /*empty*/
  #endif
  #endif
-diff -ruN NetHack-3.6.7a/include/unixconf.h NetHack-3.6.7/include/unixconf.h
---- NetHack-3.6.7a/include/unixconf.h	2024-12-13 16:28:16.700121185 -0300
-+++ NetHack-3.6.7/include/unixconf.h	2024-12-13 16:28:16.726788034 -0300
+diff -ruN include/unixconf.h include/unixconf.h
+--- include/unixconf.h	2024-12-13 16:28:16.700121185 -0300
++++ include/unixconf.h	2024-12-13 16:28:16.726788034 -0300
 @@ -133,7 +133,7 @@
   * "extra output" method is used, but not all systems provide access to
   * a fine-grained timer.
@@ -45,9 +45,9 @@ diff -ruN NetHack-3.6.7a/include/unixconf.h NetHack-3.6.7/include/unixconf.h
  #endif
  #if defined(MACOSX) && !defined(TIMED_DELAY)
  #define TIMED_DELAY
-diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
---- NetHack-3.6.7a/sys/unix/hints/linux	2024-12-13 16:28:16.706787898 -0300
-+++ NetHack-3.6.7/sys/unix/hints/linux	2024-12-13 16:28:16.730121390 -0300
+diff -ruN sys/unix/hints/linux sys/unix/hints/linux
+--- sys/unix/hints/linux	2024-12-13 16:28:16.706787898 -0300
++++ sys/unix/hints/linux	2024-12-13 16:28:16.730121390 -0300
 @@ -12,19 +12,19 @@
  #PREFIX=/usr
  PREFIX=$(wildcard ~)/nh/install
