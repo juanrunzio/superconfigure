@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+cp -r "$BASELOC"/o/games/nethack/NetHack*/* ./
+
+sudo mkdir -p /zip/cfg
+
+patch -p0 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/minimal_aarch64.diff"
+
+sh sys/unix/setup.sh sys/unix/hints/linux
