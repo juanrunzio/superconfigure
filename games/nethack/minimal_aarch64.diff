@@ -6,7 +6,7 @@ diff -ruN sys/unix/hints/linux-a sys/unix/hints/linux
  #PREFIX=/usr
  PREFIX=$(wildcard ~)/nh/install
 -HACKDIR=$(PREFIX)/games/lib/$(GAME)dir
--SYSCONFDIR=/zip/cfg
+-SYSCONFDIR=/zip
 +HACKDIR=$(wildcard ~)/work/superconfigure/superconfigure/cosmos/aarch64/bin/
 +SYSCONFDIR=$(wildcard ~)/work/superconfigure/superconfigure/cosmos/aarch64/
  SHELLDIR = $(PREFIX)/usr/bin
