@@ -82,3 +82,15 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
  
  WINSRC = $(WINTTYSRC) $(WINCURSESSRC)
  WINOBJ = $(WINTTYOBJ) $(WINCURSESOBJ)
+diff -ruN NetHack-3.6.7a/src/files.c NetHack-3.6.7/src/files.c
+--- NetHack-3.6.7a/src/files.c 2024-11-21 20:34:21.595301085 -0300
++++ NetHack-3.6.7/src/files.c   2024-11-21 20:35:45.300398773 -0300
+@@ -1733,7 +1733,7 @@
+ #endif 
+     filename = fqname(filename, whichprefix, 0);
+ #ifdef USE_FCNTL
+-    lockfd = open(filename, O_RDWR);
++    lockfd = open(filename, O_RDWR | O_CREAT, 0666);
+     if (lockfd == -1) {
+         HUP raw_printf("Cannot open file %s.  Is NetHack installed correctly?",
+                        filename);
