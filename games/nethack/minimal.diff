@@ -53,7 +53,7 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
  PREFIX=$(wildcard ~)/nh/install
  HACKDIR=$(PREFIX)/games/lib/$(GAME)dir
 -SHELLDIR = $(PREFIX)/games
-+SYSCONFDIR=/zip/cfg
++SYSCONFDIR=/zip
 +SHELLDIR = $(PREFIX)/usr/bin
  INSTDIR=$(HACKDIR)
  VARDIR = $(HACKDIR)
@@ -69,7 +69,7 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
  CFLAGS+=-DCOMPRESS=\"/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
 -CFLAGS+=-DSYSCF -DSYSCF_FILE=\"$(HACKDIR)/sysconf\" -DSECURE
 -CFLAGS+=-DTIMED_DELAY
-+CFLAGS+=-DSYSCF -DSYSCF_FILE=\"/zip/cfg/sysconf\" -DSECURE
++CFLAGS+=-DSYSCF -DSYSCF_FILE=\"/zip/sysconf\" -DSECURE
  CFLAGS+=-DHACKDIR=\"$(HACKDIR)\"
  CFLAGS+=-DDUMPLOG
  CFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
