@@ -61,7 +61,7 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
  
  
 -POSTINSTALL=cp -n sys/unix/sysconf $(INSTDIR)/sysconf; $(CHOWN) $(GAMEUID) $(INSTDIR)/sysconf; $(CHGRP) $(GAMEGRP) $(INSTDIR)/sysconf; chmod $(VARFILEPERM) $(INSTDIR)/sysconf;
-+POSTINSTALL=sudo cp -n sys/unix/sysconf $(SYSCONFDIR)/sysconf; sudo $(CHOWN) $(GAMEUID) $(SYSCONFDIR)/sysconf; sudo $(CHGRP) $(GAMEGRP) $(SYSCONFDIR)/sysconf; sudo chmod $(VARFILEPERM) $(SYSCONFDIR)/sysconf;
++POSTINSTALL=sudo cp -n sys/unix/sysconf $(SYSCONFDIR)/sysconf; sudo $(CHOWN) $(GAMEUID) $(SYSCONFDIR)/sysconf; sudo $(CHGRP) $(GAMEGRP) $(SYSCONFDIR)/sysconf; sudo chmod 0666 $(SYSCONFDIR)/sysconf;
  
 -CFLAGS=-g -O -I../include -DNOTPARMDECL
 +CFLAGS+=-Os -D_XOPEN_SOURCE_EXTENDED -D__COSMOPOLITAN__ -I../include -I$(COSMOS)/include/ncurses -DNOTPARMDECL
