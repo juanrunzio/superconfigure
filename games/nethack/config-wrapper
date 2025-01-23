@@ -5,6 +5,6 @@ cp -r "$BASELOC"/o/games/nethack/NetHack*/* ./
 
 sudo mkdir -p /zip/cfg
 
-patch -p0 --fuzz=3 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/$1"
+patch -p0 --fuzz=4 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/$1"
 
 sh sys/unix/setup.sh sys/unix/hints/linux
