@@ -89,7 +89,7 @@ diff -ruN NetHack-3.6.7a/src/files.c NetHack-3.6.7/src/files.c
      const char *fq_save;
      int fd;
 
-+    if(mkdir("save", 0700) != 0){
++    if(mkdir("save", 0666) != 0){
 +           if (errno != EEXIST) {
 +                   return -1;
 +           }
