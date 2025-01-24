@@ -94,3 +94,15 @@ diff -ruN NetHack-3.6.7a/src/files.c NetHack-3.6.7/src/files.c
      if (lockfd == -1) {
          HUP raw_printf("Cannot open file %s.  Is NetHack installed correctly?",
                         filename);
+@@ -1013,6 +1013,12 @@        
+     const char *fq_save;         
+     int fd;                                                                                                      
++    if(mkdir("save", 0700) != 0){     
++           if (errno != EEXIST) {
++                   return -1;              
++           }    
++       }             
++             
+     fq_save = fqname(SAVEF, SAVEPREFIX, 0);            
+ #if defined(MICRO) || defined(WIN32)            
+     fd = open(fq_save, O_WRONLY | O_BINARY | O_CREAT | O_TRUNC, FCMASK);
