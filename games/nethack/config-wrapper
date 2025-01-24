@@ -7,11 +7,6 @@ sudo mkdir -p /zip/cfg
 
 MINIMAL_DIFF=$1
 
-patch -p0 --fuzz=1 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/$MINIMAL_DIFF"
+patch -p0 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/$MINIMAL_DIFF"
 
 sh sys/unix/setup.sh sys/unix/hints/linux
-
-ls -la /home/runner/work/superconfigure/superconfigure/cosmos/aarch64/bin/
-ls -la /home/runner/work/superconfigure/superconfigure/cosmos/x86_64/bin/
-ls -la /home/runner/work/superconfigure/superconfigure/cosmos/x86_64/
-ls -la /home/runner/work/superconfigure/superconfigure/cosmos/aarch64/
