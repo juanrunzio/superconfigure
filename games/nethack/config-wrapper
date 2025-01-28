@@ -3,8 +3,6 @@ set -e
 
 cp -r "$BASELOC"/o/games/nethack/NetHack*/* ./
 
-sudo mkdir -p /zip/cfg
-
 MINIMAL_DIFF=$1
 
 patch -p0 -i "/home/runner/work/superconfigure/superconfigure/games/nethack/$MINIMAL_DIFF"
