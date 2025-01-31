@@ -9,4 +9,3 @@ o/games/nethack/configured.x86_64: CONFIG_COMMAND = $(BASELOC)/games/nethack/con
 o/games/nethack/configured.aarch64: CONFIG_COMMAND = $(BASELOC)/games/nethack/config-wrapper
 
 o/games/nethack/built.fat: FATTEN_COMMAND = $(BASELOC)/games/nethack/fatten
-#o/games/nethack/built.fat: BINS = nethack share/terminfo sysconf nhdat
