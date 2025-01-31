@@ -4,13 +4,13 @@ set -e
 EXE="nethack"
 FILELIST="share/terminfo sysconf nhdat"
 
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_X86_64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_X86_64/"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_X86_64/"  
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_X86_64/bin/nethack"
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_X86_64/"
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_X86_64/"  
 
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_AARCH64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_AARCH64/"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_AARCH64/"
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_AARCH64/bin/nethack"
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_AARCH64/"
+sudo cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_AARCH64/"
 
 apelinkpls () {
     OUTPUT="$1"
