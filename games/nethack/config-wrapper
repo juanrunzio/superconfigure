@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+COSMO_ARCH=$1
+
 cp -r "$BASELOC"/o/games/nethack/NetHack*/* ./
+
+sed -i "s|HACKDIR=.*|HACKDIR=$(wildcard ~)/work/superconfigure/superconfigure/cosmos/$COSMO_ARCH/bin|" sys/unix/hints/linux
+sed -i "s|SYSCONFDIR=.*|SYSCONFDIR=$(wildcard ~)/work/superconfigure/superconfigure/cosmos/$COSMO_ARCH|" sys/unix/hints/linux
 
 sh sys/unix/setup.sh sys/unix/hints/linux
