@@ -4,12 +4,12 @@ set -ex
 FILELIST='nethack'
 
 cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_X86_64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_X86_64/"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_X86_64/"  
+cp "/home/runner/nh/install/games/lib/nethackdir/sysconf" "$COSMOS_X86_64/sysconf"
+cp "/home/runner/nh/install/games/lib/nethackdir/nhdat" "$COSMOS_X86_64/nhdat"  
 
 cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_AARCH64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/sysconf" "$COSMOS_AARCH64/"
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack/nhdat" "$COSMOS_AARCH64/"
+cp "/home/runner/nh/install/games/lib/nethackdir/sysconf" "$COSMOS_AARCH64/sysconf"
+cp "/home/runner/nh/install/games/lib/nethackdir/nhdat" "$COSMOS_AARCH64/nhdat"
 
 apelinkpls () {
     OUTPUT="$1"
