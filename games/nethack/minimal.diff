@@ -53,7 +53,7 @@ diff -ruN NetHack-3.6.7a/sys/unix/hints/linux NetHack-3.6.7/sys/unix/hints/linux
  PREFIX=$(wildcard ~)/nh/install
  HACKDIR=$(PREFIX)/games/lib/$(GAME)dir
 -SHELLDIR = $(PREFIX)/games
-+SYSCONFDIR=/zip
++SYSCONFDIR=$(HACKDIR)
 +SHELLDIR = $(PREFIX)/usr/bin
  INSTDIR=$(HACKDIR)
  VARDIR = $(HACKDIR)
