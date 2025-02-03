@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 EXE="${1:-ERROR}"
 shift 1
