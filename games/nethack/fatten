@@ -1,7 +1,8 @@
 #!/bin/sh
 set -ex
 
-FILELIST='nethack'
+EXE='nethack'
+FILELIST='share/terminfo sysconf nhdat'
 
 cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_X86_64/bin/nethack"
 cp "/home/runner/nh/install/games/lib/nethackdir/sysconf" "$COSMOS_X86_64/sysconf"
@@ -32,22 +33,14 @@ apelinkpls () {
         "$TARG_FOLD/$OLDNAME_AARCH64.aarch64"
 }
 
-for EXE in $FILELIST; do
+apelinkpls "$RESULTS"/bin/"$EXE".com "$COSMOS_X86_64"/bin/"$EXE" "$COSMOS_AARCH64"/bin/"$EXE"
 
-	apelinkpls "$RESULTS"/bin/"$EXE".com "$COSMOS_X86_64"/bin/"$EXE" "$COSMOS_AARCH64"/bin/"$EXE"
-	echo "adding zip assets from x86_64 to $EXE"
-	cd "$COSMOS_X86_64"
-	zip -qr "$RESULTS"/bin/"$EXE".com \
-		share/terminfo \
-		sysconf \
-		nhdat 
+echo "adding zip assets from x86_64 to $EXE"
+cd "$COSMOS_X86_64"
+zip -qr "$RESULTS"/bin/"$EXE".com $FILELIST 
 
-	echo "adding zip assets from aarch64 to $EXE"
-	cd "$COSMOS_AARCH64"
-	zip -qr "$RESULTS"/bin/"$EXE".com \
-		share/terminfo \
-		sysconf \
-		nhdat
+echo "adding zip assets from aarch64 to $EXE"
+cd "$COSMOS_AARCH64"
+zip -qr "$RESULTS"/bin/"$EXE".com $FILELIST
 
-	cd "$BASELOC"
-done
+cd "$BASELOC"
