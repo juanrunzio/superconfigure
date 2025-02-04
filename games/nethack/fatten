@@ -1,16 +1,7 @@
 #!/bin/sh
 set -ex
 
-EXE='nethack'
-FILELIST='share/terminfo sysconf nhdat'
-
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_X86_64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/sysconf" "$COSMOS_X86_64/sysconf"
-cp "/home/runner/nh/install/games/lib/nethackdir/nhdat" "$COSMOS_X86_64/nhdat"  
-
-cp "/home/runner/nh/install/games/lib/nethackdir/nethack" "$COSMOS_AARCH64/bin/nethack"
-cp "/home/runner/nh/install/games/lib/nethackdir/sysconf" "$COSMOS_AARCH64/sysconf"
-cp "/home/runner/nh/install/games/lib/nethackdir/nhdat" "$COSMOS_AARCH64/nhdat"
+FILELIST='nethack nethack.aarch64 nethack.x86_64'
 
 apelinkpls () {
     OUTPUT="$1"
@@ -33,14 +24,22 @@ apelinkpls () {
         "$TARG_FOLD/$OLDNAME_AARCH64.aarch64"
 }
 
-apelinkpls "$RESULTS"/bin/"$EXE".com "$COSMOS_X86_64"/bin/"$EXE" "$COSMOS_AARCH64"/bin/"$EXE"
+for EXE in $FILELIST; do
+	apelinkpls "$RESULTS"/bin/"$EXE".com "$COSMOS_X86_64"/bin/"$EXE" "$COSMOS_AARCH64"/bin/"$EXE"
 
-echo "adding zip assets from x86_64 to $EXE"
-cd "$COSMOS_X86_64"
-zip -qr "$RESULTS"/bin/"$EXE".com $FILELIST 
+	echo "adding zip assets from x86_64 to $EXE"
+	cd "$COSMOS_X86_64"
+	zip -qr "$RESULTS"/bin/"$EXE".com \
+		share/terminfo \
+		sysconf \
+		nhdat
 
-echo "adding zip assets from aarch64 to $EXE"
-cd "$COSMOS_AARCH64"
-zip -qr "$RESULTS"/bin/"$EXE".com $FILELIST
+	echo "adding zip assets from aarch64 to $EXE"
+	cd "$COSMOS_AARCH64"
+	zip -qr "$RESULTS"/bin/"$EXE".com \
+		share/terminfo \
+		sysconf \
+		nhdat
 
-cd "$BASELOC"
+	cd "$BASELOC"
+done
